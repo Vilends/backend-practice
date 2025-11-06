@@ -3,7 +3,7 @@ let age = "28";
 let isLearning = "true";
 console.log ("Name:", name);
 console.log ("Age:", age);
-console.log ("Still Learing?", isLearning);
+console.log ("Still Learning?", isLearning);
 // ---Day 2: Arrays and Loops--- 
 const courses = ["HTML", "CSS", "Javascript", "Node.js"];
 for (let i = 0; i < courses.length; i++) {
@@ -34,3 +34,17 @@ function getEvenNumbers(arr) {
 }
 
 console.log(getEvenNumbers(numbers));
+import https from "node:https";
+
+https.get("https://jsonplaceholder.typicode.com/posts/1", (res) => {
+  let data = "";
+  res.on("data", (chunk) => {
+    data += chunk;
+  });
+  res.on("end", () => {
+    console.log("Response received:");
+    console.log(JSON.parse(data));
+  });
+}).on("error", (err) => {
+  console.log("Error:", err.message);
+});
